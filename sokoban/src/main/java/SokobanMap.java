@@ -9,6 +9,7 @@ public class SokobanMap {
     private final Map<Character, Integer> parsingInfo;
     private Map<Character, Integer> sokobanMapCount;
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private List<String> originMap;
 
     public SokobanMap() {
         parsedMap = new HashMap<>();
@@ -94,6 +95,7 @@ public class SokobanMap {
             }
             result.add(input);
         }
+        originMap = new ArrayList<>(result);
         return result;
     }
 }
