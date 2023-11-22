@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.util.*;
 
 public class SokobanMap {
@@ -14,6 +12,7 @@ public class SokobanMap {
         parsedMap = new ArrayList<>();
         sokobanMapCount = new HashMap<>();
         playerIdx = new int[2];
+        originMap = new ArrayList<>();
 
         sokobanMapCount.put(' ', 0);
         sokobanMapCount.put('O', 0);
@@ -68,13 +67,27 @@ public class SokobanMap {
             System.out.println(s);
         }
     }
+    /*
+    parameter : none
+    return : void
 
+    SokobanMap의 정보를 출력해준다
+     */
     public void printMapInfo() {
-        System.out.println("가로크기: " + parsedMap.get(0).size());
+        System.out.println("가로크기: " + findColSize());
         System.out.println("세로크기: " + parsedMap.size());
         System.out.println("구멍의 수: " + sokobanMapCount.get('O'));
         System.out.println("공의 수: " + sokobanMapCount.get('o'));
         System.out.println("플레이어의 위치: " + playerIdx[0] + "행 " + playerIdx[1] + "열");
+    }
+
+    private int findColSize() {
+        int max = Integer.MIN_VALUE;
+
+        for (List<Integer> li : parsedMap) {
+            if (li.size() > max) max = li.size();
+        }
+        return max;
     }
 
 }

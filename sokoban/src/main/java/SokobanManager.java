@@ -11,6 +11,7 @@ public class SokobanManager {
     private final ParsingTool parsingTool;
 
     public SokobanManager() {
+        parsedMapWithRound = new HashMap<>();
         parsingInfo = new HashMap<>();
         parsingInfo.put(' ', 0);
         parsingInfo.put('O', 1);
@@ -88,7 +89,7 @@ public class SokobanManager {
         Collections.sort(keyList);
         for (Integer i : keyList) {
             SokobanMap sokobanMap = parsedMapWithRound.get(i);
-            System.out.println("Stage " + i);
+            System.out.println("\nStage " + i);
             sokobanMap.printOriginMap();
             System.out.println();
             sokobanMap.printMapInfo();

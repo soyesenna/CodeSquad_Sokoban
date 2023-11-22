@@ -16,7 +16,8 @@ public class ParsingTool {
     public void parse(SokobanMap sokobanMap, Map<Character, Integer> parsingInfo) {
         for (String s : sokobanMap.getOriginMap()) {
             List<Integer> tmp = new ArrayList<>();
-            for (char c : s.toCharArray()) {
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
                 tmp.add(parsingInfo.get(c));
                 sokobanMap.addSokobanMapCountAsChar(c);
             }
@@ -36,7 +37,7 @@ public class ParsingTool {
         for (int i = 0; i < copiedMap.size(); i++) {
             int idx = copiedMap.get(i).indexOf(3);
             if (idx != -1) {
-                sokobanMap.setPlayerIdx(i, idx);
+                sokobanMap.setPlayerIdx(i + 1, idx + 1);
                 break;
             }
         }
