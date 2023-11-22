@@ -36,7 +36,7 @@ public class SokobanMap {
 
 
     public List<String> getOriginMap() {
-        return originMap;
+        return new ArrayList<>(originMap);
     }
 
 
@@ -45,6 +45,10 @@ public class SokobanMap {
         this.playerIdx[1] = c;
     }
 
+    /*
+    parsedMap의 getter
+    외부에서 리스트의 수정을 막기위해 리스트를 복사해서 리턴한다
+     */
     public List<List<Integer>> getParsedMap() {
         List<List<Integer>> copidMap = new ArrayList<>();
         for (int i = 0; i < parsedMap.size(); i++) {
@@ -53,5 +57,24 @@ public class SokobanMap {
         return copidMap;
     }
 
+    /*
+    parameter : none
+    return : void
+
+    originMap을 출력해주는 메서드
+     */
+    public void printOriginMap() {
+        for (String s : originMap) {
+            System.out.println(s);
+        }
+    }
+
+    public void printMapInfo() {
+        System.out.println("가로크기: " + parsedMap.get(0).size());
+        System.out.println("세로크기: " + parsedMap.size());
+        System.out.println("구멍의 수: " + sokobanMapCount.get('O'));
+        System.out.println("공의 수: " + sokobanMapCount.get('o'));
+        System.out.println("플레이어의 위치: " + playerIdx[0] + "행 " + playerIdx[1] + "열");
+    }
 
 }

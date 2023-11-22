@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SokobanManager {
 
@@ -32,7 +29,7 @@ public class SokobanManager {
      */
     public void startMapping() throws IOException {
         makeSokobanMapWithRound(input());
-
+        startParsing();
 
     }
 
@@ -80,8 +77,22 @@ public class SokobanManager {
         return result;
     }
 
-    public void printMap() {
+    /*
+    parameter : none
+    return : void
 
+    소코반 맵을 스테이지별로 출력해준다
+     */
+    public void printMap() {
+        List<Integer> keyList = new ArrayList<>(parsedMapWithRound.keySet());
+        Collections.sort(keyList);
+        for (Integer i : keyList) {
+            SokobanMap sokobanMap = parsedMapWithRound.get(i);
+            System.out.println("Stage " + i);
+            sokobanMap.printOriginMap();
+            System.out.println();
+            sokobanMap.printMapInfo();
+        }
     }
 }
 
