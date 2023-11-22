@@ -22,31 +22,36 @@ public class SokobanMap {
         sokobanMapCount.put('#', 0);
     }
 
+    public void addSokobanMapCountAsChar(char c) {
+        sokobanMapCount.replace(c, sokobanMapCount.get(c) + 1);
+    }
+
+    public void addToParsedMap(List<Integer> list) {
+        this.parsedMap.add(list);
+    }
+
     public void addToOriginMap(String s) {
         this.originMap.add(s);
     }
 
-    public List<List<Integer>> getParsedMap() {
-        return parsedMap;
-    }
-
-    public Map<Character, Integer> getSokobanMapCount() {
-        return sokobanMapCount;
-    }
 
     public List<String> getOriginMap() {
         return originMap;
     }
 
-    public int[] getPlayerIdx() {
-        return playerIdx;
+
+    public void setPlayerIdx(int r, int c) {
+        this.playerIdx[0] = r;
+        this.playerIdx[1] = c;
     }
 
-    private void printMap() {
-
+    public List<List<Integer>> getParsedMap() {
+        List<List<Integer>> copidMap = new ArrayList<>();
+        for (int i = 0; i < parsedMap.size(); i++) {
+            copidMap.add(new ArrayList<>(parsedMap.get(i)));
+        }
+        return copidMap;
     }
-
-
 
 
 }

@@ -33,6 +33,13 @@ public class SokobanManager {
     public void startMapping() throws IOException {
         makeSokobanMapWithRound(input());
 
+
+    }
+
+    private void startParsing() {
+        for (SokobanMap sokobanMap : parsedMapWithRound.values()) {
+            parsingTool.parse(sokobanMap, parsingInfo);
+        }
     }
 
     /*
