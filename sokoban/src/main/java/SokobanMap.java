@@ -81,6 +81,12 @@ public class SokobanMap {
         System.out.println("플레이어의 위치: " + playerIdx[0] + "행 " + playerIdx[1] + "열");
     }
 
+    /*
+    parameter : none
+    return : int
+
+    가로길이를 찾아서 리턴해주는 메서드
+     */
     private int findColSize() {
         int max = Integer.MIN_VALUE;
 

@@ -31,7 +31,6 @@ public class SokobanManager {
     public void startMapping() throws IOException {
         makeSokobanMapWithRound(input());
         startParsing();
-
     }
 
     private void startParsing() {
@@ -94,6 +93,21 @@ public class SokobanManager {
             System.out.println();
             sokobanMap.printMapInfo();
         }
+    }
+
+    /*
+    parameter : int
+    return : void
+
+    round를 parameter로 받아서 해당 originMap을 출력해주는 메서드
+    (Overload)
+     */
+    public void printMap(int round) {
+        SokobanMap sokobanMap = parsedMapWithRound.get(round);
+        System.out.println("\nStage " + round);
+        sokobanMap.printOriginMap();
+        System.out.println();
+        sokobanMap.printMapInfo();
     }
 }
 
