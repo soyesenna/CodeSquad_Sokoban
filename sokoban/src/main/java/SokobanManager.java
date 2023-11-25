@@ -23,6 +23,20 @@ public class SokobanManager {
     }
 
     /*
+    parameter : int
+    return : SokobanMap
+
+    라운드를 parameter로 받아서 해당 라운드의 SokobanMap을 반환해주는 메서드
+     */
+    public SokobanMap getSokobanMapWithRount(int round) throws NullPointerException{
+        try {
+            return parsedMapWithRound.get(round);
+        } catch (NullPointerException nullPointerException) {
+            throw new NullPointerException("해당 라운드의 맵이 존재하지 않습니다.");
+        }
+    }
+
+    /*
     parameter : none
     return : void
 
@@ -31,6 +45,9 @@ public class SokobanManager {
     public void startMapping() throws IOException {
         makeSokobanMapWithRound(input());
         startParsing();
+        for (SokobanMap sokobanMap : parsedMapWithRound.values()) {
+            sokobanMap.findMapSize();
+        }
     }
 
     private void startParsing() {
@@ -83,7 +100,7 @@ public class SokobanManager {
 
     소코반 맵을 스테이지별로 출력해준다
      */
-    public void printMap() {
+    public void printMapAndInfo() {
         List<Integer> keyList = new ArrayList<>(parsedMapWithRound.keySet());
         Collections.sort(keyList);
         for (Integer i : keyList) {
@@ -100,14 +117,11 @@ public class SokobanManager {
     return : void
 
     round를 parameter로 받아서 해당 originMap을 출력해주는 메서드
-    (Overload)
      */
     public void printMap(int round) {
         SokobanMap sokobanMap = parsedMapWithRound.get(round);
         System.out.println("\nStage " + round);
         sokobanMap.printOriginMap();
-        System.out.println();
-        sokobanMap.printMapInfo();
     }
 }
 
